@@ -17,7 +17,48 @@ whogofirst(){
         turn="player"
     fi
 }
-
+isboardfull(){
+	for i in {0..8}
+	do
+		if [ "${board[$i]}"  = "$i" ]
+		then
+			return="Flase"
+		else
+			return="True"
+		fi
+	done
+}
+isWinner(){
+    		if [ "${board[0]}" = "$mark" -a "${board[1]}" = "$mark" -a  "${board[2]}" = "$mark" ]
+    		then
+    			game="win"
+    		elif [ "${board[3]}" = "$mark" -a "${board[4]}"  = "$mark" -a  "${board[5]}" = "$mark" ]; then
+    			game="win"
+    		elif [ "${board[6]}" = "$mark" -a "${board[7]}"  = "$mark" -a  "${board[8]}" = "$mark"  ]; then
+    			game="win"
+    		elif [ "${board[0]}" = "$mark" -a "${board[3]}"  = "$mark" -a  "${board[6]}"  = "$mark"  ]; then
+    			game="win"
+    		elif [ "${board[1]}" = "$mark" -a "${board[4]}"  = "$mark" -a  "${board[7]}" = "$mark" ]; then
+    			game="win"
+    		elif [ "${board[2]}" = "$mark" -a "${board[5]}"  = "$mark" -a  "${board[8]}" = "$mark" ]; then
+    			game="win"
+    		elif [ "${board[0]}" = "$mark" -a "${board[4]}"  = "$mark" -a  "${board[8]}" = "$mark"  ]; then
+    			game="win"
+    		elif [ "${board[2]}" = "$mark" -a "${board[4]}"  = "$mark" -a  "${board[6]}" = "$mark" ]; then
+    			game="win"
+    		else
+    			game="running"
+    		fi
+}
+CheckPosition(){ 
+    if [ "${board[$choice]}" = "$choice" ]
+    then  
+        return="True"
+    else
+        echo "shell was not empty,so please enter another position value to move forward"
+        return="False"
+    fi
+}
 playAgain(){
     echo 'Do you want to play again? (yes or no)'
    	read playgame
