@@ -8,6 +8,15 @@ theboard(){
     echo "--|---|--"
     
 }
+whogofirst(){
+	rand=$(( RANDOM % (1 - 0 + 1 ) + 0 ))
+    if  [ $rand  -eq 0 ]
+    then
+        turn="computer"
+    else 
+        turn="player"
+    fi
+}
 
 playAgain(){
     echo 'Do you want to play again? (yes or no)'
