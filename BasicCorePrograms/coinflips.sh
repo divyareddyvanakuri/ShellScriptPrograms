@@ -3,22 +3,31 @@
 coinflips(){
     hcount=0
     tcount=0
-    flips=0
-    while [ "$flips" -lt "$tries" ]
+    Nflips=0
+    while [ "$Nflips" -lt "$tries" ]
     do
-        flips=`expr $flips + 1`
-        coin=$(( RANDOM % (1 - 0 + 1 ) + 0 ))
-        if [ $coin -eq 1 ]
+        Nflips=`expr $Nflips + 1`
+        # flip a coin
+        flip=$(($(($RANDOM%10))%2))
+        # if heads,
+        if [ $flip -eq 1 ]
         then
-        	hcount=`expr $hcount + 1`
+            #head count
+            hcount=`expr $hcount + 1`
+        # else tail,
         else
-        	tcount=`expr $tcount + 1`
+            #tail count
+            tcount=`expr $tcount + 1`
         fi
     done
-    phead=$(awk -v hcount="${hcount}" -v  flips="${flips}" 'BEGIN{print ((hcount/flips)*100)}')
-    ptail=$((100-$phead))
+    # echo "$flips"
+    # echo "$hcount"
+    # echo "$tcount"
+    var=$(echo "scale=2;$hcount / $Nflips" | bc)
+    phead=$(echo "$var*100" | bc)
+    ptail=$(echo "100-$phead" | bc)
     echo "percentage of head:$phead"
     echo "percentage of tail:$ptail"
 }
-read -p "enter tries:" tries
+read -p "enter numner of tries:" tries
 coinflips tries
