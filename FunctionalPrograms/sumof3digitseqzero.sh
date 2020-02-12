@@ -1,9 +1,8 @@
 #!/bin/bash
-#Sum of three Integer adds to ZERO
+#A simple script for Sum of three Integer adds to ZERO
 
+#method for to add integers
 isSumZero(){
-	# echo "${array[@]}"
-	# echo "$size"
 	count=0
     for (( i = 0; i < size; i++ )); do
     	for (( j = $i+1; j < size; j++ )); do
@@ -16,11 +15,16 @@ isSumZero(){
     	done
     done
 }
+#reading the size of array
 read -p "Enter the size : " size
+#to declare an array
 declare -a array
+#loop for pass arguments to an array
 for (( i = 0; i < size; i++ )); do
 	read number
 	array[$i]="$number"
 done
+#method for sum and passing the arrguments to it
 isSumZero array size
+#displays the count of Sum of three Integer adds to ZERO
 echo "distinct triplets count $count"
