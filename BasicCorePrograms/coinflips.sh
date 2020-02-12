@@ -1,5 +1,7 @@
-#!/bin/sh
-# script to Flip Coin and print percentage of Heads and Tails
+#!/bin/bash
+# script for Coin Flip  
+
+#method for calculate of percentage of heads and tails
 coinflips(){
     hcount=0
     tcount=0
