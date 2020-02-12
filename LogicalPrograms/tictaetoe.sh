@@ -1,6 +1,7 @@
 #!/bin/bash
 #A simple shell script for Cross Game
 
+
 #todisplay board 
 theboard(){
     echo "${board[0]} | ${board[1]} | ${board[2]}"
