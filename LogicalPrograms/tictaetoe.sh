@@ -1,4 +1,7 @@
-#!/bin/bash 
+#!/bin/bash
+#A simple shell script for Cross Game
+
+#todisplay board 
 theboard(){
     echo "${board[0]} | ${board[1]} | ${board[2]}"
     echo "--|---|--"
@@ -8,6 +11,8 @@ theboard(){
     echo "--|---|--"
     
 }
+
+#who will get first chance like computer or player
 whogofirst(){
 	rand=$(( RANDOM % (1 - 0 + 1 ) + 0 ))
     if  [ $rand  -eq 0 ]
@@ -17,6 +22,8 @@ whogofirst(){
         turn="player"
     fi
 }
+
+#check for board is full or not 
 isboardfull(){
 	for i in {0..8}
 	do
@@ -28,6 +35,8 @@ isboardfull(){
 		fi
 	done
 }
+
+#who is the winner of game
 isWinner(){
     		if [ "${board[0]}" = "$mark" -a "${board[1]}" = "$mark" -a  "${board[2]}" = "$mark" ]
     		then
@@ -50,6 +59,9 @@ isWinner(){
     			game="running"
     		fi
 }
+
+
+#check for position is empty or not 
 CheckPosition(){ 
     if [ "${board[$choice]}" = "$choice" ]
     then  
@@ -59,10 +71,14 @@ CheckPosition(){
         return="False"
     fi
 }
+
+#to play game again
 playAgain(){
     echo 'Do you want to play again? (yes or no)'
    	read playgame
 }
+
+#global variable
 playgame="yes"
 while [ "$playgame" = "yes" ]
 do
